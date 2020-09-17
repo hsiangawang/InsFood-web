@@ -1,0 +1,18 @@
+.main {
+    margin-top: 40px;
+    font-size: 0.8em;
+}
+.main div {
+    box-sizing: border-box;
+}
+.main-register {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 10px 10px;
+}
+
+.App-logo {
+    padding: 10px 10px 10px;
+    width: 15%;
+}

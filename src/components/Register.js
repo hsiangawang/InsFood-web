@@ -1,0 +1,128 @@
+import React from 'react';
+import { Form, Input, Button, Tooltip } from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
+
+class RegistrationForm extends React.Component {
+    state = {
+        confirmDirty: false,
+        autoCompleteResult: [],
+    };
+
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if (!err) {
+                console.log('Received values of form: ', values);
+            }
+        });
+    };
+
+    handleConfirmBlur = e => {
+        const { value } = e.target;
+        this.setState({ confirmDirty: this.state.confirmDirty || !!value });
+    };
+    //先在confirm password 輸入的校驗
+    compareToFirstPassword = (rule, value, callback) => {
+        const { form } = this.props;
+        if (value && value !== form.getFieldValue('password')) {
+            callback('Two passwords that you enter is inconsistent!');
+        } else {
+            callback();
+        }
+    };
+    //在 password輸入的校驗
+    validateToNextPassword = (rule, value, callback) => {
+        const { form } = this.props;
+        if (value && this.state.confirmDirty) {
+            form.validateFields(['confirm'], { force: true });
+        }
+        callback();
+    };
+
+    render() {
+        // this.props.form 是因為 最下面用Antd的form裡面的create方法包裝成新的object export出去
+        const { getFieldDecorator } = this.props.form;
+
+        const formItemLayout = {
+            labelCol: {
+                xs: { span: 24 },
+                sm: { span: 8 },
+            },
+            wrapperCol: {
+                xs: { span: 24 },
+                sm: { span: 16 },
+            },
+        };
+        const tailFormItemLayout = {
+            wrapperCol: {
+                xs: {
+                    span: 24,
+                    offset: 0,
+                },
+                sm: {
+                    span: 16,
+                    offset: 8,
+                },
+            },
+        };
+
+        return (
+            <Form {...formItemLayout} onSubmit={this.handleSubmit} className="register">
+                <Form.Item
+                    label="Username">
+                    {getFieldDecorator('username', {
+                        rules: [{ required: true, message: 'Please input your username!' }],
+                    })(<Input />)}
+                </Form.Item>
+                <Form.Item
+                    label={
+                        <span>
+                            Nickname&nbsp;
+                            <Tooltip title="What do you want others to call you?">
+                                <QuestionCircleOutlined />
+                            </Tooltip>
+                         </span>
+                    }>
+                    {getFieldDecorator('Nickname', {
+                        rules: [{ required: true,
+                            message: 'Please input your nickname!',
+                            whitespace: true, }],
+                    })(<Input />)}
+                </Form.Item>
+                <Form.Item label="Password" hasFeedback>
+                    {getFieldDecorator('password', {
+                        rules: [
+                            {
+                                required: true,
+                                message: 'Please input your password!',
+                            },
+                            {
+                                validator: this.validateToNextPassword,
+                            },
+                        ],
+                    })(<Input.Password />)}
+                </Form.Item>
+                <Form.Item label="Confirm Password" hasFeedback>
+                    {getFieldDecorator('confirm', {
+                        rules: [
+                            {
+                                required: true,
+                                message: 'Please confirm your password!',
+                            },
+                            {
+                                validator: this.compareToFirstPassword,
+                            },
+                        ],
+                    })(<Input.Password onBlur={this.handleConfirmBlur} />)}
+                </Form.Item>
+                <Form.Item {...tailFormItemLayout}>
+                    <Button type="primary" htmlType="submit">
+                        Register
+                    </Button>
+                </Form.Item>
+            </Form>
+        );
+    }
+}
+// HOC: From.create() 返回了一個function這個func接收了一個組件 RegistrationForm 並且返回了新的組件 Register
+export const Register = Form.create({ name: 'register' })(RegistrationForm);
