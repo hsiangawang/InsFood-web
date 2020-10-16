@@ -18,15 +18,19 @@ class RegistrationForm extends React.Component {
         this.props.form.validateFieldsAndScroll((err, values) => { //裡面跟一個callback 吃 fieldvalues參數
             if (!err) {
                 console.log('Received values of form: ', values);
+                // message.success('Registration succeed!');
+                // this.props.history.push('/login');
                 fetch(`${API_ROOT}/register`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         username: values.username,
                         password: values.password,
+                        nickname: values.nickname
                     }),
                 })
                     .then((response) => {
+                        console.log(response);
                         if (response.ok) {
                             return response.text();
                         }

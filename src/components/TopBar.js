@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
+import { Icon } from 'antd';
 
 class TopBar extends Component {
     render() {
         return (
             <header className="App-header">
-                {/*<img src={logo} alt="logo" className="App-logo"/>*/}
                 <span className="App-title">InstaFood</span>
+
+                {
+                    this.props.isLoggedIn ?
+                    <a className="logout" onClick={this.props.handleLogout} >
+                        <Icon type="logout"/>{' '}Logout
+                    </a> : null
+                }
             </header>
         );
     }
