@@ -9,7 +9,8 @@ class NormalLoginForm extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                // this.props.handleLoginSucceed();
+                // remember to comment it
+                this.props.handleLoginSucceed();
                 fetch(`${API_ROOT}/login`, {
                     method: 'POST',
                     body: JSON.stringify({

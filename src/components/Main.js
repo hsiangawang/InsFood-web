@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { Register } from './Register';
 import { Login } from './Login';
 import Home from './Home'
+import Search from './Search/Search';
 
 import logo from "../assets/images/logo.png";
 // import Home from "./Home";
@@ -28,6 +29,7 @@ class Main extends Component {
                     <Route path="/login" render={this.getLogin}/>
                     <Route path="/register" component={Register}/>
                     <Route path="/home" render={this.getHome}/>
+                    {/*<Route path="/search" component={Search}/>*/}
                     {/*<Route path="/home" component={Home}/>*/}
                     <Route render={this.getLogin}/>
 

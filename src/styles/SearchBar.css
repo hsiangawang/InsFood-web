@@ -1,0 +1,16 @@
+.search-bar {
+    padding-top: 10px;
+}
+
+.input-control {
+    min-width: 320px;
+}
+
+.button.search-button {
+    background: #bd1f1f;
+    border: none;
+}
+
+.icon {
+    color: white;
+}

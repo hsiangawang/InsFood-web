@@ -6,7 +6,6 @@ class TopBar extends Component {
         return (
             <header className="App-header">
                 <span className="App-title">InstaFood</span>
-
                 {
                     this.props.isLoggedIn ?
                     <a className="logout" onClick={this.props.handleLogout} >
