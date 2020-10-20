@@ -10,9 +10,10 @@ class NormalLoginForm extends Component {
             if (!err) {
                 console.log('Received values of form: ', values);
                 // remember to comment it
-                this.props.handleLoginSucceed();
+                // this.props.handleLoginSucceed();
                 fetch(`${API_ROOT}/login`, {
                     method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         username: values.username,
                         password: values.password,
