@@ -3,7 +3,6 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { Register } from './Register';
 import { Login } from './Login';
 import Home from './Home'
-import Search from './Search/Search';
 
 import logo from "../assets/images/logo.png";
 // import Home from "./Home";

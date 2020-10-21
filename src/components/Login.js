@@ -14,6 +14,7 @@ class NormalLoginForm extends Component {
                 fetch(`${API_ROOT}/login`, {
                     method: 'POST',
                     body: JSON.stringify({
+                        headers: { 'Content-Type': 'application/json' },
                         username: values.username,
                         password: values.password,
                     }),
