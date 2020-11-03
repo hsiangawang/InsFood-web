@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom';
+import {Switch, Route, Redirect, Link} from 'react-router-dom';
 import { Register } from './Register';
 import { Login } from './Login';
-import Home from './Home'
+import { Home } from './Home';
+import Friendships from './Friendships';
 
 import logo from "../assets/images/logo.png";
 // import Home from "./Home";
@@ -16,6 +17,9 @@ class Main extends Component {
     getHome = () => {
         return this.props.isLoggedIn ? <Home/> : <Redirect to="/login"/>;
     }
+    getFriends = () => {
+        return this.props.isLoggedIn ? <Redirect to="Friendships"/> : <Friendships handleFriends={this.props.handleFriends}/>;
+    }
 
     render() {
         return (
@@ -23,15 +27,21 @@ class Main extends Component {
                 {
                     this.props.isLoggedIn ? null : <img src={logo} alt="logo" className="App-logo"/>
                 }
+                {
+                    this.props.isLoggedIn ?
+                        <Link to="/home">Home</Link> : null
+                }
+                {this.props.isLoggedIn ?
+                    <Link to="/friendships">Friends</Link> : null}
                 <Switch>
                     {/*<Route exact path="/" component={Login}/>*/}
                     <Route path="/login" render={this.getLogin}/>
                     <Route path="/register" component={Register}/>
                     <Route path="/home" render={this.getHome}/>
+                    <Route path="/friendships" component={Friendships}/>
                     {/*<Route path="/search" component={Search}/>*/}
                     {/*<Route path="/home" component={Home}/>*/}
                     <Route render={this.getLogin}/>
-
                 </Switch>
             </div>
 

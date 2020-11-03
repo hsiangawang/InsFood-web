@@ -8,7 +8,7 @@ class BusinessRating extends Component {
                     emptySymbol="far fa-star fa-lg"
                     fullSymbol="fa fa-star fa-lg"
                     fractions={2}
-                    initialRating={4.5}
+                    initialRating={this.props.rates}
                     readonly
                 />
                 <p>1128 Reviews</p>

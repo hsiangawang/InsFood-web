@@ -1,22 +1,34 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 
 
-class SearchBar extends Component {
+export function SearchBar(props){
+    const [term, setTerm] = useState(props.term || '');
+    // const [location, setLocation] = useState(props.location || '');
 
-    render() {
-        return (
+    function submit(e) {
+        if(typeof props.search === "function") {
+           props.search(term);
+        }
+        console.log(term);
+        e.preventDefault();
+    }
+
+    return (
+        <form onSubmit={submit}>
             <div className="field has-addons search-bar">
                 <div className="control">
-                    <input className="input input-control" type="text" placeholder="Find a Restaurant"/>
+                    <input className="input input-control"
+                           onChange={(e) => setTerm(e.target.value)}
+                           type="text"
+                           value={term}
+                           placeholder="Find a Restaurant"/>
                 </div>
                 <div className="control">
-                    <div className="button search-button">
+                    <div className="button search-button" onClick={submit}>
                         <span className="icon"><i className="fas fa-search"></i> </span>
                     </div>
                 </div>
             </div>
-        );
-    }
+        </form>
+    );
 }
-
-export default SearchBar;

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Icon } from 'antd';
+import {Link} from "react-router-dom";
 
 class TopBar extends Component {
     render() {
@@ -10,7 +11,8 @@ class TopBar extends Component {
                     this.props.isLoggedIn ?
                     <a className="logout" onClick={this.props.handleLogout} >
                         <Icon type="logout"/>{' '}Logout
-                    </a> : null
+                    </a>
+                        : null
                 }
             </header>
         );

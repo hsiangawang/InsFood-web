@@ -1,6 +1,7 @@
 import React from 'react';
 import TopBar from "./TopBar";
 import Main from "./Main";
+import {Link} from "react-router-dom";
 
 class App extends React.Component {
     state = {
@@ -20,11 +21,15 @@ class App extends React.Component {
         this.setState({ isLoggedIn: false });
     }
 
+    handleFriends = () => {
+        this.setState({ isLoggedIn: false });
+    }
+
     render() {
         return (
             <div className="App">
                 <TopBar handleLogout={this.handleLogout} isLoggedIn={this.state.isLoggedIn}/>
-                <Main handleLoginSucceed={this.handleLoginSucceed} isLoggedIn={this.state.isLoggedIn}/>
+                <Main handleLoginSucceed={this.handleLoginSucceed} isLoggedIn={this.state.isLoggedIn} handleFriends={this.handleFriends}/>
             </div>
         );
     }
