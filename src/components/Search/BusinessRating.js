@@ -11,7 +11,7 @@ class BusinessRating extends Component {
                     initialRating={this.props.rates}
                     readonly
                 />
-                <p>1128 Reviews</p>
+                <p>{this.props.viewers} Reviews</p>
             </div>
         );
     }

@@ -9,7 +9,6 @@ export function SearchBar(props){
         if(typeof props.search === "function") {
            props.search(term);
         }
-        console.log(term);
         e.preventDefault();
     }
 
@@ -21,7 +20,7 @@ export function SearchBar(props){
                            onChange={(e) => setTerm(e.target.value)}
                            type="text"
                            value={term}
-                           placeholder="Find a Restaurant"/>
+                           placeholder={props.placeholder}/>
                 </div>
                 <div className="control">
                     <div className="button search-button" onClick={submit}>

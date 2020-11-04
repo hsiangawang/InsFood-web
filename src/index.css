@@ -9,6 +9,11 @@
 @import './styles/Comp_result.css';
 @import './styles/SearchResults.css';
 @import './styles/BusinessRating.css';
+@import './styles/Friendships.css';
+@import './styles/FriendCards.css';
+@import './styles/Comp_card.css';
+@import './styles/RestaurantThumnail.css';
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

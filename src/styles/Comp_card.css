@@ -1,0 +1,32 @@
+.userImage {
+    border-radius: 50%;
+}
+
+.Card{
+    margin-right: 1rem;
+    margin-top: 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 1px 10px 1px black;
+}
+
+
+.upper-container{
+    background: linear-gradient(to left, #2d00f7, #ff0291);
+    height: 3em;
+    text-align: center;
+}
+
+.restaurant-container{
+    margin: 35px auto auto auto;
+}
+
+.name-container{
+    background: white;
+    font-size:large;
+}
+
+.user_Name{
+    text-align: center;
+    color: white;
+}

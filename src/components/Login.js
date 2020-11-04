@@ -1,13 +1,16 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import { Form, Icon, Input, Button, message } from 'antd';
 import { Link } from 'react-router-dom';
 import { API_ROOT } from '../constants';
 
 class NormalLoginForm extends Component {
+
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
+                document.cookie = values.username;
+                console.log(document.cookie);
                 console.log('Received values of form: ', values);
                 // remember to comment it
                 // this.props.handleLoginSucceed();

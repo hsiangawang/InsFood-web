@@ -19,6 +19,7 @@ class App extends React.Component {
 
     handleLogout = () => {
         this.setState({ isLoggedIn: false });
+        document.cookie = null;
     }
 
     handleFriends = () => {

@@ -13,6 +13,7 @@ export function useBusinessSearch(term) {
                const rawData = await api.get('/search', searchParams);
                const resp = await rawData.json();
                console.log('to json ->', typeof resp);
+               console.log('to json ->', resp);
                setBusinesses(resp);
                setAmountResults(resp.total);
            } catch (e) {

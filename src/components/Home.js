@@ -1,12 +1,8 @@
-import React, {Component, useEffect, useState} from 'react';
-import logo from '../assets/images/logo.png';
+import React, {useEffect, useState} from 'react';
 import {SearchBar} from "./SearchBar";
 import {SearchResults} from "./Search/SearchResults";
 import {useBusinessSearch} from "../useBusinessSearch";
-import {GetAllBusiness} from "./Search/getAllBusiness";
-import Result from "./Search/Comp_result";
 import {API_ROOT} from "../constants";
-import {message} from "antd";
 import * as api from "../api";
 
 
@@ -47,7 +43,7 @@ export function Home(props) {
 
     return (
         <div className="search-area">
-            <SearchBar search={search}/>
+            <SearchBar search={search} placeholder='Find a Restaurant'/>
             <SearchResults businesses = {businesses} allbusinesses = {allBusiness}/>
         </div>
        );

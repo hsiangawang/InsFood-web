@@ -21,7 +21,7 @@ export function SearchResults(props){
     if(!props.businesses || !props.businesses.length) {
         const searchAll = props.allbusinesses.slice(0, 10).map(b => <Result key={b[0]+b[10]} bn={b}/>)
         return (
-            <div>
+            <div className='search-results'>
                 {searchAll}
             </div>
         );

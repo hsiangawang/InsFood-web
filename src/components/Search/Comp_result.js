@@ -14,7 +14,7 @@ export function CompResult(props){
             <img src={props.bn[3]} alt='business' className='business-image'/>
             <div className='business-info'>
                 <h2 className="subtitle"><a href={props.bn[2]} target="_blank">{props.bn[0]}</a></h2>
-                <BusinessRating rates={props.bn[6]}/>
+                <BusinessRating rates={props.bn[6]} viewers={props.bn[11]}/>
                 {/*<span className="tag">Tart</span> <span className="tag">Tasty</span>*/}
                 <p>{tags}</p>
             </div>
