@@ -21,3 +21,9 @@
     margin-right: 4rem;
     margin-left: 4rem;
 }
+
+.home-tab {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+}

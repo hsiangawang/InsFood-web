@@ -7,6 +7,7 @@ import {Friendships} from './Friends/Friendships';
 import FriendList from  "./Friends/FriendList"
 
 import logo from "../assets/images/logo.png";
+import {UpdateUser} from "./UpdateUserInfo";
 // import Home from "./Home";
 
 class Main extends Component {
@@ -22,29 +23,39 @@ class Main extends Component {
     getFriends = () => {
         return this.props.isLoggedIn ? <Friendships/> : <Redirect to="/login"/>;
     }
+
     getFriendCards = () => {
         return this.props.isLoggedIn ? <FriendList/> : <Redirect to="/login"/>;
+    }
+
+    getUserInfo = () => {
+        return this.props.isLoggedIn ? <UpdateUser/> : <Redirect to="/login"/>;
     }
 
     render() {
         return (
             <div className="main">
+                <div className="home-tab">
                 {
                     this.props.isLoggedIn ? null : <img src={logo} alt="logo" className="App-logo"/>
                 }
                 {
                     this.props.isLoggedIn ?
-                        <Link to="/home" className="direction_btn">Home</Link> : null
+                        <Link to="/home" className="direction_btn">Find Food</Link> : null
                 }
                 {
                     this.props.isLoggedIn ?
-                    <Link to="/friendships" className="direction_btn">Add Friends</Link> : null
+                        <Link to="/friendships" className="direction_btn">Add Friends</Link> : null
                 }
                 {
                     this.props.isLoggedIn ?
-                    <Link to="/friendList" className="direction_btn">My Friends</Link> : null
+                        <Link to="/friendList" className="direction_btn">My FriendList</Link> : null
                 }
-
+                {
+                    this.props.isLoggedIn ?
+                        <Link to="/update" className="direction_btn">User Update</Link> : null
+                }
+                </div>
                 <Switch>
                     {/*<Route exact path="/" component={Login}/>*/}
                     <Route path="/login" render={this.getLogin}/>
@@ -52,6 +63,7 @@ class Main extends Component {
                     <Route path="/home" render={this.getHome}/>
                     <Route path="/friendships" render={this.getFriends}/>
                     <Route path="/friendList" render={this.getFriendCards}/>
+                    <Route path="/update" render={this.getUserInfo}/>
                     {/*<Route path="/search" component={Search}/>*/}
                     {/*<Route path="/home" component={Home}/>*/}
                     <Route render={this.getLogin}/>

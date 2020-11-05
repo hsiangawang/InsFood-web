@@ -22,7 +22,7 @@ export function CompCard(props){
                 body: JSON.stringify({
                     headers: { 'Content-Type': 'application/json' },
                     user1_name: document.cookie,
-                    user2_name: nickName,
+                    user2_name: props.userInfo[1],
                 }),
             })
                 .then((response) => {
@@ -48,7 +48,7 @@ export function CompCard(props){
                 <div className="container">
                     <div className="row">
                         <div className="col align-self-center">
-                            <h4 className="user_Name">{nickName}</h4>
+                            <h4 className="user_Name">{props.userInfo[3]}</h4>
                             {/*<h4 className="user_Name">{typeof props.userInfo}</h4>*/}
                             {/*<img className="userImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/1200px-Tux.svg.png" height="100px" width="100px" />*/}
                         </div>

@@ -6,12 +6,12 @@ import {API_ROOT} from "../../constants";
 
 class UnFollowCompCard extends Component {
     state = {
-        nickName: this.props.userInfo
+        nickName: this.props.userInfo[3]
     };
 
     handleDisFollow = e => {
         e.preventDefault();
-        if (document.cookie != this.props.userInfo) {
+        if (document.cookie != this.props.userInfo[1]) {
 
             console.log(document.cookie);
             console.log(this.state.nickName);
@@ -21,7 +21,7 @@ class UnFollowCompCard extends Component {
                 body: JSON.stringify({
                     headers: { 'Content-Type': 'application/json' },
                     user1_name: document.cookie,
-                    user2_name: this.state.nickName,
+                    user2_name: this.props.userInfo[1],
                 }),
             })
                 .then((response) => {
@@ -31,7 +31,7 @@ class UnFollowCompCard extends Component {
                     throw new Error(response.stateText);
                 })
                 .then((data) => {
-                    this.props.refresh(this.state.nickName);
+                    this.props.refresh(this.props.userInfo);
                     console.log(data);
                     message.success('Un-Followed');
                 })
@@ -44,10 +44,10 @@ class UnFollowCompCard extends Component {
 
     render() {
         let nickName = null;
-        console.log('This is props.b1:->',this.props.userInfo);
+        console.log('This is props.b1:->',this.props.userInfo[3]);
         if (this.props.userInfo) {
             console.log('This is props.b2:->',this.props.userInfo);
-            nickName = this.props.userInfo;
+            nickName = this.props.userInfo[3];
         }
         return (
             <div className='Card'>
