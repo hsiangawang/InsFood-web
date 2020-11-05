@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import RestaurantThumbnail from './RestaurantThumbnail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button, message} from 'antd';
-import Result from "../Search/Comp_result";
 import {API_ROOT} from "../../constants";
-import {Link} from "react-router-dom";
 
 class UnFollowCompCard extends Component {
     state = {
@@ -14,8 +12,9 @@ class UnFollowCompCard extends Component {
     handleDisFollow = e => {
         e.preventDefault();
         if (document.cookie != this.props.userInfo) {
+
             console.log(document.cookie);
-            console.log(this.nickName);
+            console.log(this.state.nickName);
             fetch(`${API_ROOT}/friendship`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
@@ -32,7 +31,7 @@ class UnFollowCompCard extends Component {
                     throw new Error(response.stateText);
                 })
                 .then((data) => {
-                    this.props.stateChange();
+                    this.props.refresh(this.state.nickName);
                     console.log(data);
                     message.success('Un-Followed');
                 })

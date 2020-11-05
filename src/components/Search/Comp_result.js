@@ -6,7 +6,6 @@ export function CompResult(props){
         return (<div>No Matching Restaurants</div>);
     }
 
-    // const tags = props.bn[1].map(category => (<span className='tag' key={props.bn[3] + category}>{category}</span>));
     const tags = props.bn[1].split(',').map(category => (<span className='tag' key={props.bn[1] + category}>{category}</span>));
 
     return (
