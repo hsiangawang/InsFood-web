@@ -1,7 +1,7 @@
 .search-area {
     border-top-style: groove;
-    border-top-color: rgb(172, 122, 104);
-    border-top-width: 7px;
+    border-top-color: #FFDEAD;
+    border-top-width: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
