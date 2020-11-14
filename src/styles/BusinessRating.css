@@ -8,6 +8,14 @@
     margin-right: 4px;
 }
 
-.rating p {
-    font-size: .85rem;
- }
+
+.reviews p{
+    text-align:center; 
+    vertical-align: middle;
+    display: table-cell;
+    font-size: .85rem;   
+}
+
+
+
+
