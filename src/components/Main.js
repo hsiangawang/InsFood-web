@@ -41,19 +41,19 @@ class Main extends Component {
                 }
                 {
                     this.props.isLoggedIn ?
-                        <Link to="/home" className="direction_btn">Find Food</Link> : null
+                        <Link to="/home" className="direction_btn"><button className="direction_button">Find Food</button></Link> : null
                 }
                 {
                     this.props.isLoggedIn ?
-                        <Link to="/friendships" className="direction_btn">Add Friends</Link> : null
+                        <Link to="/friendships" className="direction_btn"><button className="direction_button">Add Friends</button></Link> : null
                 }
                 {
                     this.props.isLoggedIn ?
-                        <Link to="/friendList" className="direction_btn">My FriendList</Link> : null
+                        <Link to="/friendList" className="direction_btn"><button className="direction_button">My FriendList</button></Link> : null
                 }
                 {
                     this.props.isLoggedIn ?
-                        <Link to="/update" className="direction_btn">User Update</Link> : null
+                        <Link to="/update" className="direction_btn"><button className="direction_button">User Update</button></Link> : null
                 }
                 </div>
                 <Switch>
