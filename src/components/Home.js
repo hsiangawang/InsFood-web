@@ -3,6 +3,7 @@ import {SearchBar} from "./SearchBar";
 import {SearchResults} from "./Search/SearchResults";
 import {useBusinessSearch} from "../useBusinessSearch";
 import {API_ROOT} from "../constants";
+import {GetAllBusiness} from "./Search/getAllBusiness";
 import * as api from "../api";
 
 
