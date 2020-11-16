@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import * as api from '../../api';
 
-export function GetAllBusiness() {
+export function useAllBusiness() {
     const [allBusiness, setAllBusiness] = useState([]);
     const [allBusinessCount, setAllBusinessCount] = useState();
 
@@ -19,7 +19,7 @@ export function GetAllBusiness() {
             }
         };
         fetchData();
-    }); // to re-execute -> setSearchParam will change the searchParams and hook will be rerun
+    },[allBusiness]); // to re-execute -> setSearchParam will change the searchParams and hook will be rerun
     //setSearchParams is to refresh the new search
-    return [allBusiness, allBusinessCount];
+    return [allBusiness, setAllBusiness];
 }
