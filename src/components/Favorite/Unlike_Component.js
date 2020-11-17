@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import BusinessRating from "./BusinessRating";
-import LikeButton from "./Like_button";
+import BusinessRating from "../Search/BusinessRating";
+import Unlike_Button from "./Unlike_button";
 
-export function CompResult(props){
+export function Unlike_Component(props){
     if (!props.bn) {
         return (<div>No Matching Restaurants</div>);
     }
@@ -23,12 +23,10 @@ export function CompResult(props){
                 <p>{props.bn[8]}</p>
                 <p>{props.bn[9]}</p>
             </div>
-            {/*<div className='like-button'>*/}
-            {/*    <i className="far fa-heart fa-2x"></i>*/}
-            {/*</div>*/}
-            <LikeButton restaurant_name={props.bn[0]}/>
+
+            <Unlike_Button restaurant_name={props.bn[0]} refresh={props.refresh}/>
         </div>
     );
 }
 
-export default CompResult;
+export default Unlike_Component;

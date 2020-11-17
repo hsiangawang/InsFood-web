@@ -13,6 +13,7 @@
 @import './styles/FriendCards.css';
 @import './styles/Comp_card.css';
 @import './styles/RestaurantThumnail.css';
+@import "./styles/Unlike_Component.css";
 
 body {
   margin: 0;
