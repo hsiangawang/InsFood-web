@@ -10,7 +10,6 @@
     box-shadow: 0px 1px 10px 1px black;
 }
 
-
 .upper-container{
     background: linear-gradient(to left, #2d00f7, #ff0291);
     height: 3em;
@@ -18,7 +17,7 @@
 }
 
 .restaurant-container{
-    margin: 35px auto auto auto;
+    margin: 1rem auto auto auto;
 }
 
 .name-container{
@@ -29,4 +28,12 @@
 .user_Name{
     text-align: center;
     color: white;
+}
+
+.rec-container {
+    width:30rem; /* or whatever width you want. */
+    max-width:30rem; /* or whatever width you want. */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }

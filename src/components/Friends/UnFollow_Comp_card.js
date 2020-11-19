@@ -6,15 +6,47 @@ import {API_ROOT} from "../../constants";
 
 class UnFollowCompCard extends Component {
     state = {
-        nickName: this.props.userInfo[3]
-    };
+        friendID: this.props.userInfo[1],
+        recommendInfos: []
+    }
+
+    async fetch() {
+        fetch(`${API_ROOT}/tagRecommend/${document.cookie}/${this.props.userInfo[1]}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error(response.statusText);
+            })
+            .then((data) => {
+                // console.log('1',data);
+                this.setState({recommendInfos: data, friendID: this.props.userInfo[1]});
+                // console.log('2',this.state);
+                // return data;
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }
+
+    componentDidMount() {
+        this.fetch();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.userInfo !== this.props.userInfo) {
+            this.fetch();
+        }
+    }
 
     handleDisFollow = e => {
         e.preventDefault();
         if (document.cookie != this.props.userInfo[1]) {
 
             console.log(document.cookie);
-            console.log(this.state.nickName);
             fetch(`${API_ROOT}/friendship`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
@@ -43,57 +75,27 @@ class UnFollowCompCard extends Component {
     }
 
     render() {
-        let nickName = null;
-        console.log('This is props.b1:->',this.props.userInfo[3]);
-        if (this.props.userInfo) {
-            console.log('This is props.b2:->',this.props.userInfo);
-            nickName = this.props.userInfo[3];
-        }
+        console.log('Infos->', this.state.friendID);
+        console.log('tag Reccomend->', this.state.recommendInfos);
+        const tagRecommandResult = this.state.recommendInfos.map(
+            b => <RestaurantThumbnail key={b[0]+this.props.userInfo[1]} name={b[0]} picture_url={b[2]} url={b[1]}/>)
+
         return (
             <div className='Card'>
                 <div className='upper-container'>
                     <div className="container">
                         <div className="row">
                             <div className="col align-self-center">
-                                <h4 className="user_Name">{nickName}</h4>
-                                {/*<h4 className="user_Name">{typeof props.userInfo}</h4>*/}
-                                {/*<img className="userImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/1200px-Tux.svg.png" height="100px" width="100px" />*/}
+                                <h4 className="user_Name">{this.props.userInfo[3]}</h4>
                             </div>
                             <Button type="danger" shape="circle" icon="minus" onClick={this.handleDisFollow}/>
-                            {/*<Button type="primary">Follow</Button>*/}
                         </div>
                     </div>
                 </div>
                 <div className='lower-container'>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col">
-                                <RestaurantThumbnail name="black dog"
-                                                     picture_url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/BBQ_Lamb.jpg/220px-BBQ_Lamb.jpg" like="23"/>
-                            </div>
-                           <div className="col">
-                                <RestaurantThumbnail name="white dog"
-                                                     picture_url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/BBQ_Lamb.jpg/220px-BBQ_Lamb.jpg" like="20"/>
-                            </div>
-                            <div className="col">
-                                <RestaurantThumbnail name="white dog"
-                                                     picture_url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/BBQ_Lamb.jpg/220px-BBQ_Lamb.jpg" like="20"/>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col">
-                                <RestaurantThumbnail name="white dog"
-                                                     picture_url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/BBQ_Lamb.jpg/220px-BBQ_Lamb.jpg" like="20"/>
-                            </div>
-                            <div className="col">
-                                <RestaurantThumbnail name="black dog"
-                                                     picture_url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/BBQ_Lamb.jpg/220px-BBQ_Lamb.jpg" like="23"/>
-                            </div>
-                            <div className="col">
-                                <RestaurantThumbnail name="white dog"
-                                                     picture_url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/BBQ_Lamb.jpg/220px-BBQ_Lamb.jpg" like="20"/>
-                            </div>
-                        </div>
+                    <h5>Recommended By Your Most Like Restaurant Tag</h5>
+                    <div className="rec-container">
+                        {tagRecommandResult}
                     </div>
                 </div>
             </div>

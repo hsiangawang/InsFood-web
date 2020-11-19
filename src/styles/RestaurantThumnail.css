@@ -1,0 +1,24 @@
+.recommend-image {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    vertical-align: bottom;
+    object-fit: cover;
+}
+
+.restaurant-col {
+    display: inline-block;
+    padding: 0.5em;
+    display: block;
+    width: 33.333%;
+    box-sizing: border-box;
+}
+
+.restaurant-name {
+    text-align: center;
+    margin: auto auto auto auto;
+    width: 110px;
+    object-fit: cover;
+    vertical-align: bottom;
+    object-fit: cover;
+}

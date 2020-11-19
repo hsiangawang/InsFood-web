@@ -40,7 +40,7 @@ class Likelists extends Component {
     }
 
     render() {
-        const searchLikeRestaurant = this.state.restaurantInfos.slice(0, 10).map(b => <Unlike_Component key={b[0]+b[10]} bn={b} refresh={this.refreshRestaurants}/>)
+        const searchLikeRestaurant = this.state.restaurantInfos.map(b => <Unlike_Component key={b[0]+b[10]} bn={b} refresh={this.refreshRestaurants}/>)
         return (
             <div className="search-area">
                 {searchLikeRestaurant}

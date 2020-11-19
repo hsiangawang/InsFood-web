@@ -29,7 +29,11 @@ class AllBusiness extends Component {
     }
 
     render() {
-        const searchAll = this.state.allBusiness.slice(0, 10).map(b => <Result key={b[0]+b[10]} bn={b}/>)
+        // console.log(this.state.allBusiness.length);
+        let totalNum = this.state.allBusiness.length;
+        let start = Math.floor(Math.random()*(totalNum - 26));
+        console.log(start);
+        const searchAll = this.state.allBusiness.slice(start, start + 25).map(b => <Result key={b[0]+b[10]} bn={b}/>)
         return (
             <div>
                 {searchAll}

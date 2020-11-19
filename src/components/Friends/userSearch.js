@@ -6,7 +6,22 @@ export function UserSearch(myID) {
     const [searchParams, setSearchParams] = useState(myID);
 
     useEffect(() =>{
-
+        // let mounted = true;
+        // if (mounted) {
+        //     const fetchData = async () => {
+        //         try {
+        //             const rawData = await api.get('/user', searchParams);
+        //             const resp = await rawData.json();
+        //             console.log('to json big->', resp);
+        //             console.log('to json ->', resp[0]);
+        //             setUserInfo(resp[0]);
+        //         } catch (e) {
+        //             console.log(e);
+        //         }
+        //     };
+        //     fetchData();
+        // }
+        // // return () => mounted = false;
         const fetchData = async () => {
             try {
                 const rawData = await api.get('/user', searchParams);
