@@ -24,7 +24,7 @@ export function Unlike_Component(props){
                 <p>{props.bn[9]}</p>
             </div>
 
-            <Unlike_Button restaurant_name={props.bn[0]} refresh={props.refresh}/>
+            <Unlike_Button restaurant_info={props.bn} refresh={props.refresh}/>
         </div>
     );
 }

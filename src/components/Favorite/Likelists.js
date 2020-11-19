@@ -30,7 +30,14 @@ class Likelists extends Component {
             });
     }
 
-    refreshRestaurants = RList => this.setState({userInfos: RList});
+    refreshRestaurants = restaurant_Delete => {
+        let newRestaurantList = this.state.restaurantInfos;
+        let index = newRestaurantList.indexOf(restaurant_Delete);
+        if (index > - 1) {
+            newRestaurantList.splice(index,1);
+        }
+        this.setState({userInfos: newRestaurantList});
+    }
 
     render() {
         const searchLikeRestaurant = this.state.restaurantInfos.slice(0, 10).map(b => <Unlike_Component key={b[0]+b[10]} bn={b} refresh={this.refreshRestaurants}/>)
