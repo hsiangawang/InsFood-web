@@ -6,6 +6,7 @@ import { Home } from './Home';
 import {Friendships} from './Friends/Friendships';
 import FriendList from  "./Friends/FriendList"
 import LikeLists from "./Favorite/Likelists";
+import ReccomendLists from "./FriendRecommend/ReccomendLists";
 
 import logo from "../assets/images/logo.png";
 import {UpdateUser} from "./UpdateUserInfo";
@@ -37,6 +38,10 @@ class Main extends Component {
         return this.props.isLoggedIn ? <LikeLists/> : <Redirect to="/login"/>;
     }
 
+    getReccomendLists = () => {
+        return this.props.isLoggedIn ? <ReccomendLists/> : <Redirect to="/login"/>;
+    }
+
     render() {
         return (
             <div className="main">
@@ -51,6 +56,10 @@ class Main extends Component {
                 {
                     this.props.isLoggedIn ?
                         <Link to="/likeLists" className="direction_btn"><button className="direction_button">Like Lists</button></Link> : null
+                }
+                {
+                    this.props.isLoggedIn ?
+                        <Link to="/recommend" className="direction_btn"><button className="direction_button">Recommendation</button></Link> : null
                 }
                 {
                     this.props.isLoggedIn ?
@@ -74,6 +83,7 @@ class Main extends Component {
                     <Route path="/friendList" render={this.getFriendCards}/>
                     <Route path="/update" render={this.getUserInfo}/>
                     <Route path="/likeLists" render={this.getLikeLists}/>
+                    <Route path="/recommend" render={this.getReccomendLists}/>
                     {/*<Route path="/search" component={Search}/>*/}
                     {/*<Route path="/home" component={Home}/>*/}
                     <Route render={this.getLogin}/>
